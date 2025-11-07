@@ -1,8 +1,9 @@
 import ClientDashboard from "./client-dashboard";
 
 export default async function DashboardPage() {
-  // Replace with your prod URL on deployment if needed
-  const res = await fetch("http://localhost:3000/api/data", { cache: "no-store" });
+  // Use the Vercel-provided URL for both local and production
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+  const res = await fetch(`${baseUrl}/api/data`, { cache: "no-store" });
   const initialData = await res.json();
 
   return (

@@ -1,36 +1,50 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+ Performance Dashboard - Real-time Data Visualization
 
-## Getting Started
+## Overview
+This project is a high-performance real-time dashboard built with Next.js 14+, React, and TypeScript. It renders and updates 10,000+ data points at 60fps, featuring multiple chart types (line, bar, scatter, heatmap), interactive controls (zoom, pan, filtering), and virtual scrolling tables.
 
-First, run the development server:
+## Features
+- Multiple chart types with custom canvas/SVG rendering
+- Real-time streaming data (updates every 100ms)
+- Zoom, pan, filter, time range, and group-by controls
+- Virtualized data table with 10,000+ rows rendered efficiently
+- Performance monitoring with FPS and memory usage display
+- Stress mode to test up to 50,000 data points at 30+ fps
 
-```bash
+## Setup Instructions
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000/dashboard](http://localhost:3000/dashboard) in your browser
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Performance Testing
+- Use the "Stress Mode" toggle to test dashboard with 50,000 points
+- Monitor FPS and memory usage inside the dashboard UI to verify smooth rendering
+- Use browser DevTools and React Profiler for performance diagnostics
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Browser Compatibility
+- Tested on latest Chrome, Firefox, and Safari (desktop and mobile)
+- Responsive layouts and touch support tested on Android/iOS devices
 
-## Learn More
+## Technical Details
+- Built with Next.js 14+ App Router and React 18 features
+- Data streaming managed with custom hooks and virtualized lists
+- No external chart libraries used; all charts custom-built with canvas and SVG
+- Server components used for initial dataset hydration
+- API routes provide simulated data for SSR and client updates
 
-To learn more about Next.js, take a look at the following resources:
+## Folder Structure
+- `app/` - Next.js app routes
+- `components/` - Reusable UI and chart components
+- `hooks/` - Custom React hooks for data streaming and virtualization
+- `lib/` - Data generator and utility functions
+- `public/` - Static assets
+- `styles/` - Global and component styles
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deployment
+- Deploy to Vercel for production builds
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Screenshots
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+![Dashboard Overview](./charts.png)
+![Stress Mode Performance](./stressmode.png)

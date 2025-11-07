@@ -1,12 +1,12 @@
 import ClientDashboard from "./client-dashboard";
 
 export default async function DashboardPage() {
-  // Get the correct base URL depending on environment
+  // Only use public env or fallback to localhost for local dev!
   const baseUrl =
-    process.env.NEXT_PUBLIC_BASE_URL ||
-    process.env.VERCEL_URL
-      ? `https://${process.env.VERCEL_URL}`
+    process.env.NEXT_PUBLIC_BASE_URL?.startsWith("http")
+      ? process.env.NEXT_PUBLIC_BASE_URL
       : "http://localhost:3000";
+
   const res = await fetch(`${baseUrl}/api/data`, { cache: "no-store" });
   const initialData = await res.json();
 
